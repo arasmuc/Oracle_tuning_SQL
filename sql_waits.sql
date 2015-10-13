@@ -1,6 +1,7 @@
 -- %D%
--- %D%  sql_waits.sql  - shows top sql waits
--- %D%  example:  @sql_exec.sql
+-- %D%  sql_waits.sql  - List Database Session Waits 
+-- %D%  information about wait events for which active sessions are currently waiting
+-- %D%  example:  @sql_waits.sql
 -- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 08.10.2015
 -- %D%
@@ -9,7 +10,7 @@ set lines 150
 prompt 
 prompt
 prompt ************************************************************************
-prompt *********     Top 20 Sql waits (kumulativ) Statements, ausser SYS,SYSTEM, 
+prompt *********     Top 30 database waits (kumulativ)  
 prompt ************************************************************************
 
 SET pages 3000
@@ -18,6 +19,113 @@ SET trimspool ON
 SET trimout   ON
 
 
+column ev   heading 'Event' format 99999999D9
+column proc heading '% Total' format 9999999D99
+column un   heading 'User name' format 999999
+column wcid heading 'Wait Class ID' format 99999D99
+column wc   heading 'Wait Class' format 999999D99
+column wt   heading 'Wait Time' format 99999D99
+column pr   heading 'DRead/Exec' format 9999999D9
+column sw   heading 'Sec/Wait' format 9999999999
+column sid   heading 'SID' format 9999999999
+column sr   heading 'Serial' format 9999999999
+column fn   heading 'File ' format 9999999999
+column bn   heading 'Block number' format 9999999999
 
 
-select event, wait_class_id, wait_class, wait_time, seconds_in_wait from v$session_wait order by seconds_in_wait desc;
+
+select * from
+(select a.event as "ev",b.username as "un",b.sid as "sid", b.SERIAL# as "sr", a.seconds_in_wait as "sw", a.p1 as "fn", a.p2 as "bn",
+a.seconds_in_wait*100/(select sum(a.seconds_in_wait)  from 
+v$session_wait a 
+left join v$session b on a.sid=b.sid where 
+a.event not in (
+'dispatcher timer',
+'lock element cleanup',
+'Null event',
+'parallel query dequeue wait',
+'parallel query idle wait - Slaves',
+'parallel query idle wait - Slaves',
+'pipe get',
+'PL/SQL lock timer',
+'pmon timer',
+'rdbms ipc message',
+'slave wait',
+'smon timer',
+'SQL*Net break/reset to client',
+'SQL*Net message from client',
+'SQL*Net message to client',
+'SQL*Net more data to client',
+'virtual circuit status',
+'WMON goes to sleep'
+) 
+and a.event not like '%idledle%'
+and a.event not like '%done%'
+and a.seconds_in_wait > 0 ) as "proc",a.wait_time as "wt", 
+a.wait_class as "wc"
+from 
+v$session_wait a 
+left join v$session b on a.sid=b.sid where 
+a.event not in (
+'dispatcher timer',
+'lock element cleanup',
+'Null event',
+'parallel query dequeue wait',
+'parallel query idle wait - Slaves',
+'parallel query idle wait - Slaves',
+'pipe get',
+'PL/SQL lock timer',
+'pmon timer',
+'rdbms ipc message',
+'slave wait',
+'smon timer',
+'SQL*Net break/reset to client',
+'SQL*Net message from client',
+'SQL*Net message to client',
+'SQL*Net more data to client',
+'virtual circuit status',
+'WMON goes to sleep'
+) 
+and a.event not like '%Idle%'
+and a.event not like '%done%'
+and a.seconds_in_wait > 0 
+order by a.seconds_in_wait desc)
+where rownum < 31;
+
+
+
+
+select event, state, count(*) from v$session_wait group by event, state order by 3 desc;
+
+
+
+
+-- %D%   select  event, p1, p2 from v$session_wait where sid = 65;
+
+-- %D%    http://facedba.blogspot.de/2014/09/vsessionwait-tips.html
+
+-- %D%   select segment_name,p1, p2, segment_type,owner,tablespace_name from dba_extents,v$session_wait 
+-- %D%   where file_id=p1 and p2 between block_id and block_id + blocks -1;
+
+-- %D%   select segment_name,segment_type
+-- %D%   from dba_extents
+-- %D%   where file_id = &file_id
+-- %D%   and &Block_id between block_id and block_id + blocks – 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

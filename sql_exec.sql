@@ -35,7 +35,8 @@ column cn   heading 'Child number' format 9999999999
 
 select * from (
 select a.executions as ex, 
-executions*100/(select sum(elapsed_time) from v$sql) as proc, 
+executions*100/(select sum(executions) from v$sql a left join
+dba_users b on a.parsing_schema_id = b.user_id where executions>0 and a.parsing_schema_id not in (0,5)) as proc, 
 a.buffer_gets as "bg",a.disk_reads as dr,
 a.elapsed_time/1000000 as et,
 a.cpu_time/1000000 as "cis", 
