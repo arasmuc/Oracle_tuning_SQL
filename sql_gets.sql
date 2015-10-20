@@ -7,12 +7,12 @@
 -- %D%
 -- %D%
 
-set lines 150
+
 prompt 
 prompt 
 prompt
 prompt ************************************************************************
-prompt *** Top 20 Buffer gets (kumulativ) Statements, ausser SYS,SYSTEM, 
+prompt *** Top 20 Buffer gets  except SYS,SYSTEM, 
 prompt ************************************************************************
 
 SET pages 3000
@@ -58,7 +58,7 @@ where ROWNUM < 21;
 
 prompt 
 prompt *****************************************************************************
-prompt **********        ERSTE Execution Plan - user not SYS, SYSTEM, DBSNMP, NAGIOS
+prompt **********        FIRST Execution Plan - user not SYS, SYSTEM, DBSNMP, NAGIOS
 prompt *****************************************************************************
 
 
@@ -75,7 +75,7 @@ where rownum < 2));
 
 
 prompt ******************************************************************************
-prompt **********        ZWEITE Execution Plan - user not SYS, SYSTEM, DBSNMP, NAGIOS
+prompt **********        SECOND Execution Plan - user not SYS, SYSTEM, DBSNMP, NAGIOS
 prompt ******************************************************************************
 
 
@@ -88,7 +88,7 @@ where r = 2));
 
 
 prompt ******************************************************************************
-prompt **********        DRITTE Execution Plan - user not SYS, SYSTEM, DBSNMP, NAGIOS
+prompt **********        THIRD Execution Plan - user not SYS, SYSTEM, DBSNMP, NAGIOS
 prompt ******************************************************************************
 
 
