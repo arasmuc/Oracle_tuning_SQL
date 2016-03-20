@@ -1,5 +1,5 @@
 -- %D%
--- %D%  sql_exec.sql  - shows top sql queries most offten executed
+-- %D%  sql_exec.sql  - shows top sql queries most often executed
 -- %D%  example:  @sql_exec.sql
 -- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 08.10.2015
