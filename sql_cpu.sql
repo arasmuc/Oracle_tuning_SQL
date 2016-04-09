@@ -1,4 +1,3 @@
--- %D%
 -- %D%  sql_cpu.sql  - shows top sql queries / execution plan ordered by buffer gets
 -- %D%  example:  @sql_cpu.sql
 -- %D%  author: Arkadiusz Karol Borucki
