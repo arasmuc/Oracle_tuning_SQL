@@ -4,7 +4,7 @@
 -- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 12.10.2015
 -- %D%  query against V$SYSTEM_EVENT
--- %D%  version 1.00
+-- %D%  version 1.0
 -- %D%
  
 SET pages 3000
