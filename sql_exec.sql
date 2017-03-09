@@ -1,7 +1,6 @@
 -- %D%
 -- %D%  sql_exec.sql  - shows top sql queries most often executed
 -- %D%  example:  @sql_exec.sql
--- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 08.10.2015
 -- %D%  query against V$SQL and DBA_USERS
 -- %D%  version 1.00
