@@ -1,7 +1,6 @@
 -- %D%
 -- %D%  sql_gets.sql  - shows top sql queries / execution plan ordered by buffer gets
 -- %D%  example:  @sql_gets.sql
--- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 08.10.2015
 -- %D%  query against V$SQL and DBA_USERS
 -- %D%
