@@ -2,7 +2,6 @@
 -- %D%  sql_waits.sql  - List Database Session Waits 
 -- %D%  information about wait events for which active sessions are currently waiting
 -- %D%  example:  @sql_waits.sql
--- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 08.10.2015
 -- %D%  query against V$SESSION and V$SESSION_WAIT
 -- %D%  version 1.00
