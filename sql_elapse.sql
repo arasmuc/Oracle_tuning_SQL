@@ -1,7 +1,7 @@
 -- %D%
 -- %D%  sql_elapse.sql  - shows top sql queries / execution plan ordered by elapse time
 -- %D%  example:  @sql_elapse.sql
--- %D%  author: Arkadiusz Karol Borucki
+
 -- %D%  date: 07.10.2015
 -- %D%  query against V$SQL and DBA_USERS
 -- %D%  version 1.00
