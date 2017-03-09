@@ -1,7 +1,6 @@
 -- %D%
 -- %D%  system_event.sql  - shows current events within Oracle instance
 -- %D%  example:  @system_event.sql
--- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 12.10.2015
 -- %D%  query against V$SYSTEM_EVENT
 -- %D%  version 1.0
