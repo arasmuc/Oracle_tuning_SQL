@@ -1,6 +1,5 @@
 -- %D%  sql_cpu.sql  - shows top sql queries / execution plan ordered by buffer gets
 -- %D%  example:  @sql_cpu.sql
--- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 08.10.2015
 -- %D%  query against V$SQL and DBA_USERS
 -- %D%  varsion 1.00
