@@ -1,7 +1,6 @@
 -- %D%
 -- %D%  sql_pr.sql  - shows top sql queries / execution plan ordered by Physical Reads
 -- %D%  example:  @sql_pr.sql
--- %D%  author: Arkadiusz Karol Borucki
 -- %D%  date: 08.10.2015
 -- %D%  query against V$SQL and DBA_USERS
 -- %D%  version 1.00
